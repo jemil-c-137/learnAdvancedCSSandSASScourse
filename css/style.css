@@ -7,21 +7,30 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit; /* now every elements inherit border-box in body selector */
+}
+
+html {
+  font-size: 62.5%;
+  /* {62.5% set's font size to 62% of browser root fz which is 16px, so it makes it 10px } 
+  it's gonna be easy to change all font-sie accordint to 10px (if we want 16px we set 1.6rem */
 }
 
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-  padding: 30px;
+  padding: 3rem;
+  box-sizing: border-box;
 }
-
+/* HEADER */
 .header {
   height: 95vh;
   background-image: linear-gradient(
@@ -41,36 +50,140 @@ body {
   position: absolute;
   top: 40%;
   left: 50%;
-  background: grey;
   transform: translate(-50%, -50%);
+  text-align: center; /* align disover button  to center */
 }
 
 .logo-box {
   position: absolute;
-  top: 40px;
+  top: 4rem;
   left: 40px;
 }
 
 .logo {
   /* width will autoscale to this height, no need to specify */
-  height: 45px;
+  height: 3.5rem;
 }
 
+/* TITLE */
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+
+  backface-visibility: hidden; /* for stop shaking animations, if it happens*/
+  margin-bottom: 6rem;
 }
 
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 3s;
 }
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 400;
-  letter-spacing: 17px;
+  letter-spacing: 1.8rem;
+
+  animation: moveInRight 3s;
+}
+
+@keyframes moveInLeft {
+  0% {
+    /* for browser perfomance better animate only two props */
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    /* for browser perfomance better animate only two props */
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block; /* prevent overriding on over elements {sets this element as normal block} */
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(30, 30, 30, 0.2);
+}
+
+.btn:active {
+  /* make buttons click animation */
+  transform: translateY(-1px);
+  box-shadow: 0 1rem 1rem rgba(30, 30, 30, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  transition: all 0.5s ease-in;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+@keyframes moveInBottom {
+  0% {
+    /* for browser perfomance better animate only two props */
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.btn-animated {
+  animation-name: moveInBottom;
+  animation-duration: 3s;
+  animation-fill-mode: backwards;
 }
