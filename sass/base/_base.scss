@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /* now every elements inherit border-box in body selector */
+}
+
+html {
+  font-size: 62.5%;
+  /* {62.5% set's font size to 62% of browser root fz which is 16px, so it makes it 10px } 
+  it's gonna be easy to change all font-sie accordint to 10px (if we want 16px we set 1.6rem */
+}
+
+body {
+  box-sizing: border-box;
+}

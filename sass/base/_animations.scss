@@ -1,0 +1,38 @@
+@keyframes moveInLeft {
+  0% {
+    /* for browser perfomance better animate only two props */
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    /* for browser perfomance better animate only two props */
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes moveInBottom {
+  0% {
+    /* for browser perfomance better animate only two props */
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
