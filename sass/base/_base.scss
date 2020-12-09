@@ -7,11 +7,30 @@
 }
 
 html {
-  font-size: 62.5%;
-  /* {62.5% set's font size to 62% of browser root fz which is 16px, so it makes it 10px } 
-  it's gonna be easy to change all font-sie accordint to 10px (if we want 16px we set 1.6rem */
+  font-size: 62.5%; /*defines what 1 rem is; 1rem === 10px/16px == 62.5% */
+
+  @include respond(tab-land) {
+    //width < 1200
+    font-size: 56.25%; // if 1 rem == 9px, then  9/16 == 56.25%
+  }
+
+  @include respond(tab-port) {
+    // width < 900
+    font-size: 50%; // if 1 rem == 8px, then  8/16 == 50%
+  }
+
+
+  @include respond(big-desktop) {
+    // width > 1800
+    font-size: 75%; // if 1 rem == 12px, then  12/16 == 75%
+  }
 }
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
