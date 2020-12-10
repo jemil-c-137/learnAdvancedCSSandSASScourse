@@ -6,7 +6,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/icon-font.css" />
+    <!-- <link rel="stylesheet" href="css/icon-font.css" /> -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 
@@ -71,9 +71,33 @@
           </div>
           <div class="col-1-of-2">
             <div class="composition">
+              <!-- here we declare which image use on which viewport width, and set default size As 300px. -->
+              <img
+                srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                class="composition__photo composition__photo--p1"
+                alt="photo 1"
+                src="img/nat-1-large.jpg"
+              />
+              <img
+                srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                class="composition__photo composition__photo--p2"
+                alt="photo 2"
+                src="img/nat-2-large.jpg"
+              />
+              <img
+                srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                class="composition__photo composition__photo--p3"
+                alt="photo 3"
+                src="img/nat-3-large.jpg"
+              />
+              <!-- 
               <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1" />
               <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2" />
               <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3" />
+              -->
             </div>
           </div>
         </div>
@@ -330,7 +354,17 @@
     </main>
     <footer class="footer">
       <div class="footer__logo-box">
-        <img src="img/logo-green-1x.png" alt="Full logo" class="footer__log" />
+        <!-- in picture element we specify which sourse to use on which widths 
+          Especially here, we use sourse as source of image on mobile screens(37.5em === 600px)
+          and img tag with low and hires images for wider screens
+          
+        -->
+        <picture class="footer__logo">
+          <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)" />
+          <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" class="footer__log" />
+        </picture>
+
+        <!--  <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" class="footer__log" /> responsive inage for hi-res screen and low-res screen-->
       </div>
       <div class="row">
         <div class="col-1-of-2">
@@ -364,9 +398,13 @@
           <p class="popup__text">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci saepe quaerat, hic facere, labore ex vero
             iure nam tenetur expedita id perferendis temporibus itaque obcaecati reiciendis. Impedit fuga saepe alias?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum in voluptate inventore temporibus ea soluta ad id minus. Doloribus ipsa odio minima, vitae veritatis dignissimos dolore perferendis quia labore error.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque soluta expedita perspiciatis voluptatibus dicta quod ipsum consequatur obcaecati, nisi ea aspernatur vel, at voluptatum corporis quidem dolorum fugit perferendis dolor.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, rerum nam? Fugit tempore, impedit eaque at natus tenetur doloribus vitae laudantium numquam maxime, minus unde quas eos, iure veniam quam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum in voluptate inventore temporibus ea soluta
+            ad id minus. Doloribus ipsa odio minima, vitae veritatis dignissimos dolore perferendis quia labore error.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque soluta expedita perspiciatis voluptatibus
+            dicta quod ipsum consequatur obcaecati, nisi ea aspernatur vel, at voluptatum corporis quidem dolorum fugit
+            perferendis dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, rerum nam? Fugit
+            tempore, impedit eaque at natus tenetur doloribus vitae laudantium numquam maxime, minus unde quas eos, iure
+            veniam quam.
           </p>
           <a href="#" class="btn btn--green">Book now</a>
         </div>
